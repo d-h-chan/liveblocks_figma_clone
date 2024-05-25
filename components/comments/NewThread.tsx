@@ -183,6 +183,8 @@ export const NewThread = ({ children }: Props) => {
           y,
           resolved: false,
           zIndex: maxZIndex + 1,
+          quote: "",
+          time: 0,
         },
       });
 
@@ -223,7 +225,7 @@ export const NewThread = ({ children }: Props) => {
          * Portal.Root: https://www.radix-ui.com/primitives/docs/utilities/portal
          */
         <Portal.Root
-          className='absolute left-0 top-0'
+          className="absolute left-0 top-0"
           style={{
             pointerEvents: allowUseComposer ? "initial" : "none",
             transform: `translate(${composerCoords.x}px, ${composerCoords.y}px)`,

@@ -3,7 +3,12 @@
 import { useCallback, useRef } from "react";
 import { ThreadData } from "@liveblocks/client";
 
-import { ThreadMetadata, useEditThreadMetadata, useThreads, useUser } from "@/liveblocks.config";
+import {
+  ThreadMetadata,
+  useEditThreadMetadata,
+  useThreads,
+  useUser,
+} from "@/liveblocks.config";
 import { useMaxZIndex } from "@/lib/useMaxZIndex";
 
 import { PinnedThread } from "./PinnedThread";
@@ -30,7 +35,11 @@ export const CommentsOverlay = () => {
       {threads
         .filter((thread) => !thread.metadata.resolved)
         .map((thread) => (
-          <OverlayThread key={thread.id} thread={thread} maxZIndex={maxZIndex} />
+          <OverlayThread
+            key={thread.id}
+            thread={thread}
+            maxZIndex={maxZIndex}
+          />
         ))}
     </div>
   );
@@ -49,8 +58,11 @@ const OverlayThread = ({ thread, maxZIndex }: OverlayThreadProps) => {
    * We're using the useUser hook to get the user of the thread.
    *
    * useUser: https://liveblocks.io/docs/api-reference/liveblocks-react#useUser
+   *
+   * Note: removed for now since authentication is not implemented
    */
-  const { isLoading } = useUser(thread.comments[0].userId);
+  // const { isLoading } = useUser(thread.comments[0].userId);
+  const { isLoading } = useThreads();
 
   // We're using a ref to get the thread element to position it
   const threadRef = useRef<HTMLDivElement>(null);

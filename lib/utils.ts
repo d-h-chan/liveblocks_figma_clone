@@ -110,6 +110,11 @@ export const exportToPdf = () => {
     format: [canvas.width, canvas.height],
   });
 
+  /* TODO: set pdf background color
+  doc.setFillColor(204, 204,204,0);
+  doc.rect(10, 10, 150, 160, "F");
+  */
+
   // get the canvas data url
   const data = canvas.toDataURL();
 
